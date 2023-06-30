@@ -1,0 +1,51 @@
+$start-button: #d01818;
+
+.start-screen {
+  background-color: #404040;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    height: 100vh;
+    width: 100vw;
+    max-width: 100%;
+    object-fit: cover;
+  }
+
+  button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 20px;
+    position: relative;
+    animation: glowing 2s infinite;
+    position: absolute;
+    right: 10%;
+    background-color: $start-button;
+    color: black;
+    border: 2px solid rgb(185, 168, 68);
+
+    &:hover {
+      box-shadow: 0 0 40px #e00b0b, 0 0 80px #e00b0b;
+      border: 2px solid rgb(249, 214, 12);
+      background-color: #e00b0b;
+      animation: none;
+    }
+  }
+
+  @keyframes glowing {
+    0% {
+      box-shadow: 0 0 5px $start-button, 0 0 20px $start-button;
+    }
+    50% {
+      box-shadow: 0 0 20px $start-button, 0 0 40px $start-button;
+    }
+    100% {
+      box-shadow: 0 0 5px $start-button, 0 0 20px $start-button;
+    }
+  }
+}
