@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ring-of-fire-cm": {
+      "hosting": {
+        "ringoffire": [
+          "ring-of-fire-cm-ea6ac"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ring-of-fire-cm"
+  }
+}
