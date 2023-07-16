@@ -13,6 +13,15 @@ export class Game {
     }
     shuffle(this.stack);
   }
+
+  public toJson() {
+    return {
+      players: this.players,
+      stack: this.stack,
+      playedCards: this.playedCards,
+      currentPlayer: this.currentPlayer
+    };
+  }
 }
 
 function shuffle(array: string[]) {
@@ -26,7 +35,10 @@ function shuffle(array: string[]) {
     currentIndex--;
 
     // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [array[randomIndex],array[currentIndex]];
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
   }
 
   return array;

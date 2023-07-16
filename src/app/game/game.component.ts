@@ -1,10 +1,15 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Game } from 'src/models/game';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import {
+  Firestore,
+  doc,
+  collection,
+  collectionData,
+  docData,
+} from '@angular/fire/firestore';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -15,25 +20,21 @@ export class GameComponent implements OnInit {
   pickCardAnimation: boolean = false;
   currentCard: string = '';
   game!: Game;
-  /* firestore: Firestore = inject(Firestore); */
-  
+  firestore: Firestore = inject(Firestore);
 
-  constructor(private firestore: AngularFirestore, public dialog: MatDialog) {
-
-  }
+  constructor(private route: ActivatedRoute, public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.newGame();
-    this.firestore.collection('games').valueChanges().subscribe((game: unknown[]) => {
-      /* this.game = games[0] as Game; */
-      console.log('gameupdate: ', game);
+    this.route.params.subscribe(async (params) => {
+      let docRef = doc(this.firestore, 'games', params['id']);
+      docData(docRef).subscribe((game: any) => {
+        console.log('Game Update:', game);
+        this.game.currentPlayer = game.currentPlayer;
+        this.game.playedCards = game.playedCards;
+        this.game.players = game.players;
+        this.game.stack = game.stack;
+      });
     });
-    
-  }
-
-  newGame() {
-    this.game = new Game();
-    console.log(this.game);
   }
 
   takeCard() {
