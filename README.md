@@ -1,27 +1,34 @@
-# Ringoffire
+# 🔥 Ring of Fire
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+Eine Web-Umsetzung des Kartenspiels "Ring of Fire" (auch bekannt als "Ich hab noch nie") für mehrere Spieler:innen auf einem Gerät. Karten werden nacheinander aufgedeckt, jede Zahl löst eine eigene Spielregel aus.
 
-## Development server
+**Live-Demo:** https://ring-of-fire-cm-ea6ac.web.app
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Features
 
-## Code scaffolding
+- Spieler:innen hinzufügen und verwalten
+- Karten nacheinander aufdecken, animierte Kartenanzeige
+- Regel-Anzeige pro gezogener Karte
+- Spielstand wird in Firebase Firestore persistiert
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Tech-Stack
 
-## Build
+- [Angular](https://angular.io/) 16 (Standalone Components, Routing)
+- [Angular Material](https://material.angular.io/) für UI-Komponenten
+- [Firebase](https://firebase.google.com/) / Firestore für den Spielzustand
+- Firebase Hosting für das Deployment
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Lokal starten
 
-## Running unit tests
+```bash
+npm install
+ng serve
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Anschließend im Browser `http://localhost:4200` öffnen.
 
-## Running end-to-end tests
+## Tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+ng test
+```
