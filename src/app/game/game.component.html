@@ -1,9 +1,6 @@
-<!-- <app-player *ngFor="let player of game.players; let i = index;" [name]="player" [playerActive]="i == game.currentPlayer"
-    [ngStyle]="{'top.px':100 + (i * 90)}" class="player-position"></app-player>
- -->
     <ng-container *ngIf="game.players && game.players.length > 0">
         <app-player *ngFor="let player of game.players; let i = index;" [name]="player" [playerActive]="i === game.currentPlayer"
-          [ngStyle]="{'top.px': 100 + (i * 90)}" class="player-position"></app-player>
+          [ngStyle]="{'top.px': playerTopOffset + (i * playerSpacing)}" class="player-position"></app-player>
       </ng-container>
 
 <div class="playground">
@@ -11,7 +8,7 @@
         <img [ngStyle]="{'right.px': i * 5}" *ngFor="let c of [0,1,2,3,4]; let i = index;"
             src="/assets/img/cards/card_cover.png">
         <!-- Card stack -->
-        <img (click)="takeCard()" class="top-card" style="right: 25px" src="/assets/img/cards/card_cover.png">
+        <img (click)="takeCard()" class="top-card" [class.disabled]="!canTakeCard" style="right: 25px" src="/assets/img/cards/card_cover.png">
         <!-- Stack for played Cards -->
         <img *ngFor="let card of game.playedCards" class="played-card" src="/assets/img/cards/{{ card }}.png">
         <!-- Currend card (animation) -->
@@ -21,7 +18,7 @@
     </div>
 </div>
 
-<app-game-info [card]="currentCard" class="pin-bottom"></app-game-info>
+<app-game-info [card]="currentCard" [noPlayers]="!canTakeCard" class="pin-bottom"></app-game-info>
 
 <button (click)="openDialog()" mat-fab color="primary" class="btn-add">
     <mat-icon>add</mat-icon>

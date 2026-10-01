@@ -23,3 +23,20 @@
 .player-active {
   background-color: orange !important;
 }
+
+@media (max-width: 600px) {
+  .player {
+    width: 160px;
+    font-size: 14px;
+
+    span {
+      font-size: 18px;
+      margin-left: 8px;
+    }
+
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
