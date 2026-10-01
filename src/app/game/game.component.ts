@@ -11,7 +11,7 @@ import {
 } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 
-const MOBILE_BREAKPOINT = 600;
+const MOBILE_BREAKPOINT = 1000;
 
 @Component({
   selector: 'app-game',
