@@ -1,4 +1,4 @@
-# 🔥 Ring of Fire
+# Ring of Fire
 
 Eine Web-Umsetzung des Kartenspiels "Ring of Fire" (auch bekannt als "Ich hab noch nie") für mehrere Spieler:innen auf einem Gerät. Karten werden nacheinander aufgedeckt, jede Zahl löst eine eigene Spielregel aus.
 
