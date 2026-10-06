@@ -2,8 +2,14 @@
   "hosting": [
     {
       "target": "ringoffire",
-      "source": ".",
-      "frameworksBackend": {}
+      "public": "dist/ringoffire",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
     }
   ]
 }
