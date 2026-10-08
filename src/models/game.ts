@@ -1,7 +1,7 @@
 const CARDS_PER_SUIT = 13;
 
 /**
- * Daten eines Spiels, so wie sie in Firestore gespeichert werden.
+ * Die Spieldaten, so wie sie in Firestore liegen.
  */
 export interface GameData {
   players: string[];
@@ -24,8 +24,7 @@ export class Game {
   }
 
   /**
-   * Wandelt das Spiel in ein Objekt um, das in Firestore gespeichert werden kann.
-   * @returns Die Spieldaten ohne Methoden.
+   * Gibt die Spieldaten als einfaches Objekt zurück, das sich in Firestore speichern lässt.
    */
   public toJson(): GameData {
     return {
@@ -38,9 +37,7 @@ export class Game {
 }
 
 /**
- * Mischt ein Array in place mit dem Fisher-Yates-Verfahren.
- * @param array - Das Array, das gemischt wird.
- * @returns Dasselbe Array in gemischter Reihenfolge.
+ * Mischt das Array direkt (Fisher-Yates) und gibt es zurück.
  */
 function shuffle(array: string[]): string[] {
   for (let currentIndex = array.length - 1; currentIndex > 0; currentIndex--) {

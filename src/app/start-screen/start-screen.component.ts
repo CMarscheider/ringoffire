@@ -20,7 +20,7 @@ export class StartScreenComponent implements OnInit {
   ngOnInit(): void {}
 
   /**
-   * Legt ein neues Spiel in Firestore an und navigiert zur Spielseite.
+   * Legt ein neues Spiel in Firestore an und öffnet die Spielseite.
    */
   newGame(): void {
     let newGame = new Game();

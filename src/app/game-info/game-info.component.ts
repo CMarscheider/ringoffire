@@ -33,7 +33,7 @@ export class GameInfoComponent implements OnInit, OnChanges {
   ngOnInit(): void {}
 
   /**
-   * Übernimmt Titel und Beschreibung der aktuellen Karte, sobald sich die Eingabe ändert.
+   * Zeigt Titel und Text zur gezogenen Karte an, sobald sich die Karte ändert.
    */
   ngOnChanges(): void {
     if (this.card) {

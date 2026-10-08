@@ -18,7 +18,7 @@ export class DialogAddPlayerComponent implements OnInit {
   ngOnInit(): void {}
 
   /**
-   * Schließt den Dialog ohne Ergebnis, wenn der Benutzer abbricht.
+   * Schließt den Dialog, ohne einen Namen zurückzugeben.
    */
   onNoClick(): void {
     this.dialogRef.close();

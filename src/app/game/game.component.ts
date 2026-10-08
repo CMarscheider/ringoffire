@@ -29,7 +29,7 @@ export class GameComponent implements OnInit {
   constructor(private route: ActivatedRoute, public dialog: MatDialog) {}
 
   /**
-   * Passt das Layout an und lädt das Spiel mit der ID aus der URL aus Firestore.
+   * Lädt das Spiel aus der URL-ID aus Firestore und passt das Layout an.
    */
   ngOnInit(): void {
     this.updateLayoutForViewport();
@@ -47,7 +47,7 @@ export class GameComponent implements OnInit {
   }
 
   /**
-   * Setzt Abstand und Abstand zwischen den Spielern passend zur Fensterbreite.
+   * Passt Abstand und Position der Spieler an die Fensterbreite an.
    */
   @HostListener('window:resize')
   updateLayoutForViewport(): void {
@@ -57,14 +57,14 @@ export class GameComponent implements OnInit {
   }
 
   /**
-   * Gibt an, ob mindestens ein Spieler vorhanden ist und eine Karte gezogen werden darf.
+   * Eine Karte darf nur gezogen werden, wenn mindestens ein Spieler dabei ist.
    */
   get canTakeCard(): boolean {
     return this.game.players.length > 0;
   }
 
   /**
-   * Zieht die oberste Karte vom Stapel und gibt den Zug an den nächsten Spieler weiter.
+   * Zieht die oberste Karte und gibt den Zug weiter.
    */
   takeCard(): void {
     if (!this.canTakeCard || this.pickCardAnimation) {
@@ -79,8 +79,8 @@ export class GameComponent implements OnInit {
   }
 
   /**
-   * Zeigt die gezogene Karte an und legt sie nach der Animation auf den Ablagestapel.
-   * @param card - Name der gezogenen Karte, z. B. "hearts_5".
+   * Zeigt die Karte während der Animation und legt sie danach auf den Ablagestapel.
+   * @param card - Name der Karte, z. B. "hearts_5".
    */
   private startPickCardAnimation(card: string): void {
     this.currentCard = card;
@@ -93,14 +93,14 @@ export class GameComponent implements OnInit {
   }
 
   /**
-   * Setzt den aktuellen Spieler auf den nächsten Spieler in der Runde.
+   * Der nächste Spieler ist dran. Am Ende der Runde fängt wieder der erste an.
    */
   private passTurnToNextPlayer(): void {
     this.game.currentPlayer = (this.game.currentPlayer + 1) % this.game.players.length;
   }
 
   /**
-   * Öffnet den Dialog zum Hinzufügen eines Spielers und übernimmt den eingegebenen Namen.
+   * Öffnet das Fenster für einen neuen Spieler. Ein Name wird nur übernommen, wenn etwas eingegeben wurde.
    */
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
