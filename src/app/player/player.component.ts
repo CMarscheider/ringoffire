@@ -12,7 +12,10 @@ export class PlayerComponent implements OnInit {
 
   constructor() {}
   
+  /**
+   * Initialisiert die Komponente. Aktuell ist keine Initialisierung nötig.
+   */
   ngOnInit(): void {
-    
+
   }
 }

@@ -22,6 +22,7 @@ $random-rotation: random($max-rotation - $min-rotation + 1) + $min-rotation;
 }
 
 .top-card {
+  right: 25px;
   cursor: pointer;
   &:hover {
     transform: scale(1.1) translateY(-10px);
@@ -43,6 +44,7 @@ $random-rotation: random($max-rotation - $min-rotation + 1) + $min-rotation;
 }
 
 .pick-card {
+  right: 25px;
   animation: pick-card-animation 1s ease-in-out;
   transform: scale(1) translateX(220px) translateY(-280px) rotate(10deg);
 }

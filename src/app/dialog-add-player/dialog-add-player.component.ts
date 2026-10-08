@@ -12,8 +12,14 @@ export class DialogAddPlayerComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<DialogAddPlayerComponent>) {}
 
+  /**
+   * Initialisiert die Komponente. Aktuell ist keine Initialisierung nötig.
+   */
   ngOnInit(): void {}
 
+  /**
+   * Schließt den Dialog ohne Ergebnis, wenn der Benutzer abbricht.
+   */
   onNoClick(): void {
     this.dialogRef.close();
   }

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { DocumentData, Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -9,11 +9,11 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
   title = 'ringoffire';
-  firestore: Firestore = inject(Firestore)
-  items$: Observable<any[]>;
+  firestore: Firestore = inject(Firestore);
+  items$: Observable<DocumentData[]>;
 
   constructor() {
-    const aCollection = collection(this.firestore, 'items')
+    const aCollection = collection(this.firestore, 'items');
     this.items$ = collectionData(aCollection);
   }
 }

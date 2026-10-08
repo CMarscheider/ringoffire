@@ -1,3 +1,15 @@
+const CARDS_PER_SUIT = 13;
+
+/**
+ * Daten eines Spiels, so wie sie in Firestore gespeichert werden.
+ */
+export interface GameData {
+  players: string[];
+  stack: string[];
+  playedCards: string[];
+  currentPlayer: number;
+}
+
 export class Game {
   public players: string[] = [];
   public stack: string[] = [];
@@ -5,41 +17,35 @@ export class Game {
   public currentPlayer: number = 0;
 
   constructor() {
-    for (let i = 1; i < 14; i++) {
-      this.stack.push('ace_' + i);
-      this.stack.push('hearts_' + i);
-      this.stack.push('clubs_' + i);
-      this.stack.push('diamonds_' + i);
+    for (let rank = 1; rank <= CARDS_PER_SUIT; rank++) {
+      this.stack.push('ace_' + rank, 'hearts_' + rank, 'clubs_' + rank, 'diamonds_' + rank);
     }
     shuffle(this.stack);
   }
 
-  public toJson() {
+  /**
+   * Wandelt das Spiel in ein Objekt um, das in Firestore gespeichert werden kann.
+   * @returns Die Spieldaten ohne Methoden.
+   */
+  public toJson(): GameData {
     return {
       players: this.players,
       stack: this.stack,
       playedCards: this.playedCards,
-      currentPlayer: this.currentPlayer
+      currentPlayer: this.currentPlayer,
     };
   }
 }
 
-function shuffle(array: string[]) {
-  let currentIndex = array.length,
-    randomIndex;
-
-  // While there remain elements to shuffle.
-  while (currentIndex != 0) {
-    // Pick a remaining element.
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex],
-      array[currentIndex],
-    ];
+/**
+ * Mischt ein Array in place mit dem Fisher-Yates-Verfahren.
+ * @param array - Das Array, das gemischt wird.
+ * @returns Dasselbe Array in gemischter Reihenfolge.
+ */
+function shuffle(array: string[]): string[] {
+  for (let currentIndex = array.length - 1; currentIndex > 0; currentIndex--) {
+    const randomIndex = Math.floor(Math.random() * (currentIndex + 1));
+    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
   }
-
   return array;
 }

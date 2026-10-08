@@ -1,6 +1,6 @@
 <mat-card>
     <mat-card-title>{{ noPlayers ? 'Add players first' : (card ? title : 'Please pick a card')}}</mat-card-title>
     <mat-card-content>
-        {{ noPlayers ? 'Use the + button to add at least one player before you can draw a card' : (card ? description : 'Please click on the card stack to select the next card')}}
+        <p>{{ noPlayers ? 'Use the + button to add at least one player before you can draw a card' : (card ? description : 'Please click on the card stack to select the next card')}}</p>
     </mat-card-content>
 </mat-card>

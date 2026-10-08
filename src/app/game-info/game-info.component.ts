@@ -27,8 +27,14 @@ export class GameInfoComponent implements OnInit, OnChanges {
   @Input() card: string = '';
   @Input() noPlayers: boolean = false;
 
+  /**
+   * Initialisiert die Komponente. Aktuell ist keine Initialisierung nötig.
+   */
   ngOnInit(): void {}
 
+  /**
+   * Übernimmt Titel und Beschreibung der aktuellen Karte, sobald sich die Eingabe ändert.
+   */
   ngOnChanges(): void {
     if (this.card) {
       console.log('current card is:', this.card);

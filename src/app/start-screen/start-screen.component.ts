@@ -1,8 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { Firestore } from '@angular/fire/firestore';
 import { addDoc, collection } from 'firebase/firestore';
 import { Game } from 'src/models/game';
-import { Firestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-start-screen',
@@ -14,9 +14,15 @@ export class StartScreenComponent implements OnInit {
 
   constructor(private router: Router) {}
 
+  /**
+   * Initialisiert die Startseite. Aktuell ist keine Initialisierung nötig.
+   */
   ngOnInit(): void {}
 
-  newGame() {
+  /**
+   * Legt ein neues Spiel in Firestore an und navigiert zur Spielseite.
+   */
+  newGame(): void {
     let newGame = new Game();
     const collRef = collection(this.firestore, 'games');
     console.log(newGame);
