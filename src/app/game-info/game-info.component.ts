@@ -28,7 +28,7 @@ export class GameInfoComponent implements OnInit, OnChanges {
   @Input() noPlayers: boolean = false;
 
   /**
-   * Initialisiert die Komponente. Aktuell ist keine Initialisierung nötig.
+   * Initialisiert die Komponente.
    */
   ngOnInit(): void {}
 

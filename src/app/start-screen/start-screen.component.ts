@@ -15,7 +15,7 @@ export class StartScreenComponent implements OnInit {
   constructor(private router: Router) {}
 
   /**
-   * Initialisiert die Startseite. Aktuell ist keine Initialisierung nötig.
+   * Initialisiert die Startseite.
    */
   ngOnInit(): void {}
 
